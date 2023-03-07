@@ -86,7 +86,7 @@
 
             <?php foreach ($skills as $key => $value) { ?>
               <div class="custom-control custom-checkbox custom-control-inline">
-                <input name="skill" id="<?= $key; ?>" type="checkbox" class="custom-control-input" value="<?= $key; ?>">
+                <input name="skill[]" id="<?= $key; ?>" type="checkbox" class="custom-control-input" value="<?= $key; ?>">
                 <label for="<?= $key; ?>" class="custom-control-label"><?= $key; ?></label>
               </div>
             <?php } ?>
@@ -147,9 +147,7 @@
                 <td><?= $jenis_kelamin; ?></td>
                 <td><?= $domisili; ?></td>
                 <td><?= $prodi; ?></td>
-                <td><?php foreach($skill_user as $skill) {
-                    echo $skill;}; ?>
-                </td>
+                <td><?php foreach($skill_user as $skill) {echo $skill . ", ";}; ?></td>
             </tr>
             <?php } ?>
         </table>

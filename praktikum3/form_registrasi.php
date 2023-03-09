@@ -13,7 +13,7 @@
 
 </head>
 <body>
-    <div class="container" style="padding: 2.5vw 1vw 2.5vw 1vw">
+    <div class="container" style="padding: 2.5vw 1vw 1vw 1vw">
         <h2>Form Input IT Club GDSC</h2>
         <br>
         <form method="POST">
@@ -114,7 +114,6 @@
           </div>
         </form>
 
-        <br>
         <hr>
         <br>
 
@@ -126,7 +125,9 @@
                 <th>jenis kelamin</th>
                 <th>domisili</th>
                 <th>prodi</th>
-                <th>skill programming</th>
+                <th>skill</th>
+                <th>score</th>
+                <th>keterangan</th>
             </tr>
 
             <?php 
@@ -148,9 +149,16 @@
                 <td><?= $domisili; ?></td>
                 <td><?= $prodi; ?></td>
                 <td><?php foreach($skill_user as $skill) {echo $skill . ", ";}; ?></td>
+                <td><?= $score; ?></td>
+                <td><?= $ket; ?></td>
             </tr>
             <?php } ?>
         </table>
+        <br>
+        <hr>
+        <br>
+        <footer class="text-center" style="color: gray;">&copy Maryam Hasnaa' Syamila STT-NF 22TI03</footer>
+        <br>
     </div>
 </body>
 </html>

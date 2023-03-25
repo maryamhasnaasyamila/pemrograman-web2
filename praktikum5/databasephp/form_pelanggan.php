@@ -1,5 +1,11 @@
 <?php 
 require_once 'dbkoneksi.php';
+if (isset($_GET["idedit"])) {
+  $idedit = $_GET["idedit"];
+  $query = "SELECT * FROM pelanggan WHERE id = '$idedit'";
+  $sql = $dbh->query($query);
+  $row = $sql->fetch();
+}
 ?>
             
 <form method="POST" action="proses_pelanggan.php">
@@ -12,11 +18,18 @@ require_once 'dbkoneksi.php';
             <i class="fa fa-anchor"></i>
           </div>
         </div> 
+
         <input id="kode" name="kode" type="text" class="form-control"
-        value="">
+        value="<?php if (isset($_GET["idedit"])) {echo $row["kode"];} ?>">
+        <?php if (isset($_GET["idedit"])) {
+          echo '<input id="" name="idedit" type="hidden" class="form-control"
+          value="'.$_GET["idedit"].'">';
+        }
+        ?>
       </div>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="nama" class="col-4 col-form-label">Nama Pelanggan</label> 
     <div class="col-8">
@@ -26,11 +39,13 @@ require_once 'dbkoneksi.php';
             <i class="fa fa-adjust"></i>
           </div>
         </div> 
+
         <input id="nama" name="nama" type="text" class="form-control" 
-        value="">
+        value="<?php if (isset($_GET["idedit"])) {echo $row["nama"];} ?>">
       </div>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="jk" class="col-4 col-form-label">Jenis Kelamin</label> 
     <div class="col-8">
@@ -40,13 +55,15 @@ require_once 'dbkoneksi.php';
             <i class="fa fa-arrow-circle-o-left"></i>
           </div>
         </div> 
+
         <input id="jk" name="jk" 
-        value="L" type="radio" class="form-control">Laki-laki
+        value="L" type="radio" class="form-control" <?php if(isset($_GET["idedit"])) {if($row["jk"] == "L"){echo "checked";}} ?>>Laki - Laki
         <input id="jk" name="jk" 
-        value="P" type="radio" class="form-control">Perempuan
+        value="P" type="radio" class="form-control" <?php if(isset($_GET["idedit"])) {if($row["jk"] == "P"){echo "checked";}} ?>>Perempuan
       </div>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="tmp_lahir" class="col-4 col-form-label">Tempat lahir</label> 
     <div class="col-8">
@@ -56,11 +73,13 @@ require_once 'dbkoneksi.php';
             <i class="fa fa-arrow-circle-up"></i>
           </div>
         </div> 
-        <input id="tmp_lahir" name="tmp_lahir" value=""
+
+        <input id="tmp_lahir" name="tmp_lahir" value="<?php if (isset($_GET["idedit"])) {echo $row["tmp_lahir"];} ?>"
         type="text" class="form-control">
       </div>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="tgl_lahir" class="col-4 col-form-label">Tanggal lahir</label> 
     <div class="col-8">
@@ -70,12 +89,14 @@ require_once 'dbkoneksi.php';
             <i class="fa fa-arrow-circle-right"></i>
           </div>
         </div> 
+
         <input id="tgl_lahir" name="tgl_lahir" 
-        value=""
+        value="<?php if (isset($_GET["idedit"])) {echo $row["tgl_lahir"];} ?>"
         type="date" class="form-control">
       </div>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="email" class="col-4 col-form-label">Email</label> 
     <div class="col-8">
@@ -85,26 +106,39 @@ require_once 'dbkoneksi.php';
             <i class="fa fa-arrow-circle-right"></i>
           </div>
         </div> 
+
         <input id="email" name="email" 
-        value=""
+        value="<?php if (isset($_GET["idedit"])) {echo $row["email"];} ?>"
         type="email" class="form-control">
       </div>
     </div>
   </div>
+
   <div class="form-group row">
     <label for="kartu_id" class="col-4 col-form-label">Kartu</label> 
     <div class="col-8">
-        <?php 
-            $sqljenis = "SELECT * FROM kartu";
-            $rsjenis = $dbh->query($sqljenis);
-        ?>
+      <?php 
+        $sqljenis = "SELECT * FROM kartu";
+        $rsjenis = $dbh->query($sqljenis);
+      ?>
+
       <select id="kartu_id" name="kartu_id" class="custom-select">
-          <?php 
-            foreach($rsjenis as $rowjenis){
-         ?>
-            <option value="<?=$rowjenis['id']?>"><?=$rowjenis['nama']?></option>
-         <?php
-            }
+        <?php 
+        if (isset($_GET["idedit"])) {
+          $id_kartu = $row["kartu_id"];
+          $query2 = "SELECT * FROM kartu WHERE id = '$id_kartu'";
+          $sql2 = $dbh->query($query2);
+          $row2 = $sql->fetch();
+          echo '<option value="'.$row2['id'].'">'.$row2['nama'].'</option>';
+        }
+        foreach($rsjenis as $rowjenis){
+          
+        ?>
+
+        <option value="<?=$rowjenis['id']?>"><?=$rowjenis['nama']?></option>
+
+        <?php
+          }
         ?>
         <!--
         <option value="1">Elektronik</option>
@@ -114,10 +148,11 @@ require_once 'dbkoneksi.php';
       </select>
     </div>
   </div> 
+  <br>
   <div class="form-group row">
     <div class="offset-4 col-8">
       <input type="submit" name="proses" type="submit" 
-      class="btn btn-primary" value="Simpan"/>
+      class="btn btn-primary" value="<?php if (isset($_GET["idedit"])) {echo "Update";} else{echo "Simpan";} ?>"/>
     </div>
   </div>
 </form>

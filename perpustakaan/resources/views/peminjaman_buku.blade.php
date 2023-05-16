@@ -53,7 +53,7 @@
                                 <input class="form-control" type="date" name="date" value="{{ old('date') }}">
                             </div>
                             <div class="form-group">
-                                <label class="col-4">Tema Buku</label>
+                                <label>Tema Buku</label>
                                 <select name="tema" id="tema" class="form-control">
                                     <option hidden>-- Pilih Tema --</option>
                                     <option value="Fiksi">Fiksi</option>

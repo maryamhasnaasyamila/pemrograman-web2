@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrasiAnggotaController;
+use App\Http\Controllers\PeminjamanBukuController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +41,9 @@ Route::get('/form-registrasi-anggota',
 
 Route::post('/hasil-regist', 
 [RegistrasiAnggotaController::class, 'hasil']);
+
+Route::get('/form-peminjaman-buku', 
+[PeminjamanBukuController::class, 'index']);
+
+Route::post('/hasil-peminjaman', 
+[PeminjamanBukuController::class, 'hasil']);

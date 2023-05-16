@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RegistrasiAnggotaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +33,9 @@ Route::get('/nilai', function () {
 Route::get('/kesehatan', function () {
     return view('kesehatan');
 });
+
+Route::get('/form-registrasi-anggota', 
+[RegistrasiAnggotaController::class, 'index']);
+
+Route::post('/hasil-regist', 
+[RegistrasiAnggotaController::class, 'hasil']);

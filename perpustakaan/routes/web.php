@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrasiAnggotaController;
 use App\Http\Controllers\PeminjamanBukuController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\MemberController;
 
 
 /*
@@ -52,3 +54,9 @@ Route::post('/hasil-peminjaman',
 // praktikum 10
 Route::get('/dashboard', 
 [DashboardController::class, 'index']);
+
+Route::get('/book', 
+[BookController::class, 'buku']);
+
+Route::get('/member', 
+[MemberController::class, 'anggota']);

@@ -22,7 +22,7 @@
                   <div class="card-body">
                     <table class="table table-bordered">
                     <h4 class="card-title">Daftar Anggota Perpustakaan</h4>
-                      <thead class="table-success">
+                      <thead class="table-info">
                         <tr>
                           <th> No </th>
                           <th> Nama Anggota </th>

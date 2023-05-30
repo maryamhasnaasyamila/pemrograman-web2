@@ -6,6 +6,8 @@ use App\Http\Controllers\PeminjamanBukuController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\AnggotaController;
+
 
 
 /*
@@ -55,8 +57,15 @@ Route::post('/hasil-peminjaman',
 Route::get('/dashboard', 
 [DashboardController::class, 'index']);
 
-Route::get('/book', 
-[BookController::class, 'buku']);
+// Route::get('/book', 
+// [BookController::class, 'buku']);
 
 Route::get('/member', 
 [MemberController::class, 'anggota']);
+
+// praktikum 11
+Route::get('/book', 
+[BookController::class, 'index']);
+
+Route::get('/anggota', 
+[AnggotaController::class, 'index']);

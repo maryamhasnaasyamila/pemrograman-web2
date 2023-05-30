@@ -4,23 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// Import model "book"
-use App\Models\Book;
+// Import model "anggota"
+use App\Models\Anggota;
 
-class BookController extends Controller
+class AnggotaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        // Book = model
-        // all = semua data 
-        $books = Book::all();
-        return view('admin.book.index', [
-            'books' =>  $books
+        //
+        $members = Anggota::all();
+        return view('admin.anggota.index', [
+            'members' =>  $members
         ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.

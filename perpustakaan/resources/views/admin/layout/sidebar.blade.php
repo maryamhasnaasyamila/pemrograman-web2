@@ -25,8 +25,14 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url('/book') }}">
-                <span class="menu-title">Buku</span>
+                <span class="menu-title">Buku based on database</span>
                 <i class="mdi mdi-book menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('/anggota') }}">
+                <span class="menu-title">Anggota based on database</span>
+                <i class="mdi mdi-account-group menu-icon"></i>
               </a>
             </li>
             <li class="nav-item">

@@ -28,6 +28,7 @@ class AnggotaController extends Controller
     public function create()
     {
         //
+        return view('admin.anggota.create');
     }
 
     /**
@@ -36,6 +37,17 @@ class AnggotaController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'name' => 'required|min:5|max:20',
+            'email' => 'required|email',
+            'gender' => 'required|in:Pria,Wanita',
+            'status' => 'required|min:5|max:20',
+            'address' => 'required|min:5|max:20',
+
+        ]);
+        // mengirim data ke model
+        Anggota::create($validated);
+        return redirect('/dashboard/anggota');
     }
 
     /**
@@ -67,6 +79,9 @@ class AnggotaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+         // mencari data berdasarkan id
+        $anggota = Anggota::find($id);
+        $anggota->delete();
+        return redirect('/dashboard/anggota');
     }
 }

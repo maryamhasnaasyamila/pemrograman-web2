@@ -64,8 +64,29 @@ Route::get('/member',
 [MemberController::class, 'anggota']);
 
 // praktikum 11
-Route::get('/book', 
+Route::get('/dashboard/book', 
 [BookController::class, 'index']);
 
-Route::get('/anggota', 
+Route::get('/dashboard/anggota', 
 [AnggotaController::class, 'index']);
+
+// praktikum 12
+Route::get('/dashboard/book/create', 
+[BookController::class, 'create']);
+
+Route::post('/dashboard/book/store', 
+[BookController::class, 'store']);
+
+Route::delete('/dashboard/book/destroy/{id}', 
+[BookController::class, 'destroy']);
+
+
+// anggota
+Route::get('/dashboard/anggota/create', 
+[AnggotaController::class, 'create']);
+
+Route::post('/dashboard/anggota/store', 
+[AnggotaController::class, 'store']);
+
+Route::delete('/dashboard/anggota/destroy/{id}', 
+[AnggotaController::class, 'destroy']);

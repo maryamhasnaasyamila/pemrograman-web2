@@ -15,7 +15,7 @@
             </ul>
           </nav>
         </div>
-            <a href="" class="btn btn-sm btn-primary"><i class="mdi mdi-plus"></i>  Tambah Anggota</a>
+            <a href="/dashboard/anggota/create" class="btn btn-sm btn-primary"><i class="mdi mdi-plus"></i>  Tambah Anggota</a>
             <div class="row">
               <div class="col-lg-12 stretch-card">
                 <div class="card">
@@ -45,7 +45,11 @@
                           <td>
                             <a href="" class="btn btn-sm btn-info">View</a>
                             <a href="" class="btn btn-sm btn-warning">Edit</a>
-                            <a href="" class="btn btn-sm btn-danger">Delete</a>
+                            <form class="d-inline" action="{{ url('dashboard/anggota/destroy', $anggota->id) }}" method="post">
+                              @csrf
+                              @method('delete')
+                              <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                            </form>
                           </td>
                         </tr>
                         @endforeach

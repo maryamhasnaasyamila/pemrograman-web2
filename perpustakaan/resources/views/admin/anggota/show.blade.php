@@ -5,7 +5,7 @@
           <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
               <i class="mdi mdi-account-group"></i>
-            </span> Daftar Anggota
+            </span> Detail Anggota
           </h3>
           <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
@@ -15,44 +15,38 @@
             </ul>
           </nav>
         </div>
-            <a href="/dashboard/anggota/create" class="btn btn-sm btn-primary"><i class="mdi mdi-plus"></i>  Tambah Anggota</a>
+            <a href="/dashboard/anggota" class="btn btn-sm btn-primary"><i class="mdi mdi-arrow-left"></i>  Back</a>
             <div class="row">
               <div class="col-lg-12 stretch-card">
                 <div class="card">
                   <div class="card-body">
                     <table class="table table-bordered">
-                    <h4 class="card-title">Daftar Anggota Perpustakaan</h4>
+                         @if (session('succes'))
+                        <div class="alert alert-success">
+                          {{ session('succes') }}
+                        </div>
+                        <meta http-equiv="refresh" content="3;url=/dashboard/anggota">
+                      @endif
+                    <h4 class="card-title">Detail Anggota</h4>
                       <thead class="table-info">
                         <tr>
-                          <th> No </th>
+                          <th> ID </th>
                           <th> Nama Anggota </th>
                           <th> Email </th>
                           <th> Gender </th>
                           <th> Status </th>
                           <th> Alamat </th>
-                          <th> Action </th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($members as $anggota)
                         <tr>
-                          <td> {{ $loop->iteration }} </td>
-                          <td> {{ $anggota->name }} </td>
-                          <td> {{ $anggota->email }} </td>
-                          <td> {{ $anggota->gender }} </td>
-                          <td> {{ $anggota->status }} </td>
-                          <td> {{ $anggota->address }} </td>
-                          <td>
-                            <a href="{{ url('/dashboard/anggota/show', $anggota->id) }}" class="btn btn-sm btn-info">View</a>
-                            <a href="{{ url('/dashboard/anggota/edit', $anggota->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                            <form class="d-inline" action="{{ url('dashboard/anggota/destroy', $anggota->id) }}" method="post">
-                              @csrf
-                              @method('delete')
-                              <button class="btn btn-sm btn-danger" type="submit">Delete</button>
-                            </form>
-                          </td>
+                          <td> {{ $members->id }} </td>
+                          <td> {{ $members->name }} </td>
+                          <td> {{ $members->email }} </td>
+                          <td> {{ $members->gender }} </td>
+                          <td> {{ $members->status }} </td>
+                          <td> {{ $members->address }} </td>
                         </tr>
-                        @endforeach
                       </tbody>
                     </table>
                   </div>

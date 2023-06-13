@@ -90,3 +90,23 @@ Route::post('/dashboard/anggota/store',
 
 Route::delete('/dashboard/anggota/destroy/{id}', 
 [AnggotaController::class, 'destroy']);
+
+// praktikum 13
+Route::get('/dashboard/book/edit/{id}', 
+[BookController::class, 'edit']);
+
+Route::put('/dashboard/book/update/{id}', 
+[BookController::class, 'update']);
+
+Route::get('/dashboard/book/show/{id}', 
+[BookController::class, 'show']);
+
+// anggota
+Route::get('/dashboard/anggota/edit/{id}', 
+[AnggotaController::class, 'edit']);
+
+Route::put('/dashboard/anggota/update/{id}', 
+[AnggotaController::class, 'update']);
+
+Route::get('/dashboard/anggota/show/{id}', 
+[AnggotaController::class, 'show']);

@@ -7,7 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AnggotaController;
-
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -55,7 +55,7 @@ Route::post('/hasil-peminjaman',
 
 // praktikum 10
 Route::get('/dashboard', 
-[DashboardController::class, 'index']);
+[DashboardController::class, 'index'])->middleware('auth');
 
 // Route::get('/book', 
 // [BookController::class, 'buku']);
@@ -65,48 +65,52 @@ Route::get('/member',
 
 // praktikum 11
 Route::get('/dashboard/book', 
-[BookController::class, 'index']);
+[BookController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard/anggota', 
-[AnggotaController::class, 'index']);
+[AnggotaController::class, 'index'])->middleware('auth');
 
 // praktikum 12
 Route::get('/dashboard/book/create', 
-[BookController::class, 'create']);
+[BookController::class, 'create'])->middleware('auth');
 
 Route::post('/dashboard/book/store', 
-[BookController::class, 'store']);
+[BookController::class, 'store'])->middleware('auth');
 
 Route::delete('/dashboard/book/destroy/{id}', 
-[BookController::class, 'destroy']);
+[BookController::class, 'destroy'])->middleware('auth');
 
 
 // anggota
 Route::get('/dashboard/anggota/create', 
-[AnggotaController::class, 'create']);
+[AnggotaController::class, 'create'])->middleware('auth');
 
 Route::post('/dashboard/anggota/store', 
-[AnggotaController::class, 'store']);
+[AnggotaController::class, 'store'])->middleware('auth');
 
 Route::delete('/dashboard/anggota/destroy/{id}', 
-[AnggotaController::class, 'destroy']);
+[AnggotaController::class, 'destroy'])->middleware('auth');
 
 // praktikum 13
 Route::get('/dashboard/book/edit/{id}', 
-[BookController::class, 'edit']);
+[BookController::class, 'edit'])->middleware('auth');
 
 Route::put('/dashboard/book/update/{id}', 
-[BookController::class, 'update']);
+[BookController::class, 'update'])->middleware('auth');
 
 Route::get('/dashboard/book/show/{id}', 
-[BookController::class, 'show']);
+[BookController::class, 'show'])->middleware('auth');
 
 // anggota
 Route::get('/dashboard/anggota/edit/{id}', 
-[AnggotaController::class, 'edit']);
+[AnggotaController::class, 'edit'])->middleware('auth');
 
 Route::put('/dashboard/anggota/update/{id}', 
-[AnggotaController::class, 'update']);
+[AnggotaController::class, 'update'])->middleware('auth');
 
 Route::get('/dashboard/anggota/show/{id}', 
-[AnggotaController::class, 'show']);
+[AnggotaController::class, 'show'])->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

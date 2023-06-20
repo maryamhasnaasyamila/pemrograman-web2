@@ -11,8 +11,8 @@
                   <!--change to offline or busy as needed-->
                 </div>
                 <div class="nav-profile-text d-flex flex-column">
-                  <span class="font-weight-bold mb-2">Maryam Hasnaa' S.</span>
-                  <span class="text-secondary text-small">Teknik Informatika 03</span>
+                  <span class="font-weight-bold mb-2">{{Auth::user()->name}}</span>
+                  <span class="text-secondary text-small">{{Auth::user()->email}}</span>
                 </div>
                 <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
               </a>
